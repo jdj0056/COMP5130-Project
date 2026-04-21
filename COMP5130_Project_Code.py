@@ -1,4 +1,5 @@
 import random
+import time
 from collections import defaultdict
 from collections import Counter
 
@@ -100,8 +101,17 @@ if __name__ == "__main__":
     file = 'CA-GrQc.txt'
     graph = load_graph(file)
     print(f"\nRunning Louvain on {file}.")
+    louvain_start = time.time()
     louvain_test = louvain(graph)
+    louvain_end = time.time()
+    louvain_runtime = louvain_end - louvain_start
     print(f"\nResult of the Louvain test: {len(louvain_test)} communities found.")
-    print(f"\nRunning Label Propogation on {file}.")
+    print(f"\nRuntime for Louvain: {louvain_runtime}.")
+
+    print(f"\nRunning Label Propagation on {file}.")
+    label_prop_start = time.time()
     label_prop_test = label_propogation(graph)
+    label_prop_end = time.time()
+    label_prop_runtime = label_prop_end - label_prop_start
     print(f"\nResult of the Label Propogation test: {len(label_prop_test)} communities found.")
+    print(f"\nRuntime for Label Propagation: {louvain_runtime}.")
