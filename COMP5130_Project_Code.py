@@ -75,7 +75,7 @@ def label_propogation(a):
     labels = {n: n for n in nodes}
     for i in range(100):
         random.shuffle(nodes)
-        changed = True
+        changed = False
         for u in nodes:
             if not a[u]:
                 continue
@@ -86,6 +86,7 @@ def label_propogation(a):
             if labels[u] == most_common:
                 changed = False
             else:
+                labels[u] = most_common
                 changed = True
         if not changed:
             break
